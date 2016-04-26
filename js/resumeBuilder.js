@@ -4,29 +4,34 @@ This is empty on purpose! Your code to build the resume will go here.
 
 var bio = {
     "name": "Esmond Kan",
-    "role": "Front End Developer",
-    "welcomeMessage": "Hello World!",
+    "role": "Front-End Web Developer",
     "contacts": {
-        "email": "contact@esmondkan.com",
         "mobile": "604-561-9600",
+        "email": "contact@esmondkan.com",
         "github": "ezumi",
         "linkedin": "ca.linkedin.com/in/esmondkan",
         "location": "Vancouver, British Columbia"
     },
-    "skills": ["Html", "CSS", "Javascript", "jQuery","Ninja Skills"],
+    "welcomeMessage": "Hello World!",
+    "skills": ["HTML5", "CSS3", "Javascript", "jQuery","Photoshop"],
     "bioPic": "images/fry.jpg",
-    display: function() {
+     display: function() {
 
         /* Name and Role */
         $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
         $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 
-
         /* Contact Information */
         $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
         $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
         $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", "linkedIn").replace("%data%", bio.contacts.linkedin));
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+
+        $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+        $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", "linkedIn").replace("%data%", bio.contacts.linkedin));
 
         /* Bio Image */
         $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
@@ -36,11 +41,9 @@ var bio = {
 
         /* Skills */
         $("#header").append(HTMLskillsStart);
-        var x = 0;
-        while (bio.skills[x] !== undefined) {
-            $("#skills").append(HTMLskills.replace("%data%", bio.skills[x]));
-            x++;
-        }
+        bio.skills.forEach(function(skillData) {
+            $("#skills").append(HTMLskills.replace("%data%", skillData));
+        });
     }
 }
 
@@ -51,26 +54,56 @@ var education = {
             "location": "5021 Kingsway, Burnaby, BC, V5H 4A5",
             "degree": "Diploma",
             "majors": "Computer Systems Programmer",
-            "dates": 2000,
+            "dates": "2000 - 2001",
             "url": "http://www.vccollege.ca/"
         },
         {
             "name": "British Columbia Institute of Technology",
             "location": "3700 Willingdon Avenue, Burnaby, BC, V5G 3H2",
-            "degree": "",
+            "degree": "Diploma",
             "majors": "Computer Systems Technology",
-            "dates": 2003,
+            "dates": "2003 - 2004",
             "url": "http://www.bcit.ca/"
         }
     ],
     "onlineCourses" : [
         {
-            "title": "Front End Nano Degree",
+            "title": "Front-End Web Developer Nanodegree",
             "school": "Udacity",
-            "dates": 2016,
+            "date": 2016,
             "url": "http://www.udacity.com/"
         }
-    ]
+    ],
+    display : function() {
+        education.schools.forEach(function(schoolData, index) {
+            $("#education").append(HTMLschoolStart);
+
+            /* Replace URL and school name then concatenate degree to string */
+            var formattedSchool = HTMLschoolName.replace("#", education.schools[index].url)
+                                                .replace("%data%", education.schools[index].name)
+                                + HTMLschoolDegree.replace("%data%", education.schools[index].degree);
+
+            $(".education-entry:last").append(formattedSchool);
+            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[index].dates));
+            $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[index].location));
+            $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[index].majors));
+        });
+
+        education.onlineCourses.forEach(function(onlineData, index) {
+            $("#education").append(HTMLonlineClasses);
+
+            var onlineClasses = $("#education").find("h3");
+
+            /* Replace URL and program name then concatenate school name to string */
+            var formattedOnlineClasses = HTMLonlineTitle.replace("#", education.onlineCourses[index].url)
+                                                        .replace("%data%", education.onlineCourses[index].title)
+                                       + HTMLonlineSchool.replace("%data%", education.onlineCourses[index].school);
+
+            onlineClasses.append(formattedOnlineClasses);
+            onlineClasses.append(HTMLonlineDates.replace("%data%", education.onlineCourses[index].date));
+            onlineClasses.append(HTMLonlineURL.replace("#", education.onlineCourses[index].url).replace("%data%", education.onlineCourses[index].url));
+        });
+    }
 }
 
 var work = {
@@ -79,17 +112,34 @@ var work = {
             "employer": "Metro West Insurance Agency Ltd",
             "title": "IT Technical Support",
             "location": "206 E Columbia Street, New Westminster, BC, V3L 3W5",
-            "dates": "04/2006 - 04/2015",
-            "description": "Deploy, configure and maintain computer systems at the company. Provide assistance to agents in resolving their technical issues."
+            "dates": "2006 - 2015",
+            "description": "Deploy, configure and maintain computer systems at the company. Provide assistance to agents in resolving their technical issues.",
+            "url": "http://metrowestinsurance.net/"
         },
         {
             "employer": "PushMedia",
             "title": "Marketing Project Manager",
             "location": "#285 - 4111 Hastings Street, Burnaby, BC, V5C 6T7",
-            "dates": "01/2013 - Present",
-            "description": "Develop advertising campaigns to target various online channels. This includes creating banner assets, html pages utilizing javascript and css. Optimize campaigns after deployment to streamline projects."
+            "dates": "2013 - Present",
+            "description": "Develop and integrate advertising campaigns targeting various online mediums including web, social media, mobile and display network traffic. Design web visuals and graphic assets for marketing projects. Create fully responsive landing pages utilizing HTML, CSS, Javascript and jQuery. Optimize deployed campaigns with revised marketing strategies to increase return of investment.",
+            "url": "http://pushmedia.ca/"
         }
-    ]
+    ],
+    display : function() {
+        work.jobs.forEach(function(workData, index) {
+            $("#workExperience").append(HTMLworkStart);
+
+            /* Replace URL and employter name then concatenate job title to string */
+            var formattedEmployer = HTMLworkEmployer.replace("#", work.jobs[index].url)
+                                                    .replace("%data%", work.jobs[index].employer)
+                                  + HTMLworkTitle.replace("%data%", work.jobs[index].title);
+
+            $(".work-entry:last").append(formattedEmployer);
+            $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[index].dates));
+            $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[index].location));
+            $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[index].description));
+        });
+    }
 }
 
 var projects = {
@@ -102,48 +152,24 @@ var projects = {
         }
     ],
     display : function() {
-        for (key in projects.project) {
+        projects.project.forEach(function(projectData, index) {
             $("#projects").append(HTMLprojectStart);
-            if(projects.project[key])
-                $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.project[key].title));
-                $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.project[key].date));
-                $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.project[key].description));
-                if(projects.project[key].images.length > 0) {
-                    for (image in projects.project[key].images) {
-                        $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.project[key].images[image]));
-                    }
-                }
-        }
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.project[index].title));
+            $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.project[index].date));
+            $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.project[index].description));
+
+            if(projects.project[index].images.length > 0) {
+                projects.project[index].images.forEach(function(imageData, imageIndex){
+                    $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.project[index].images[imageIndex]));
+                });
+            }
+        });
     }
 }
-
-
-
-/* Work Experience */
-for (key in work.jobs) {
-    $("#workExperience").append(HTMLworkStart);
-    if(work.jobs[key]) {
-        $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[key].employer) + HTMLworkTitle.replace("%data%", work.jobs[key].title));
-        $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[key].dates));
-        $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[key].location));
-        $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[key].description));
-    }
-}
-
-$(document).click(function(loc) {
-// your code goes here
-    logClicks(loc.pageX, loc.pageY);
-});
 
 bio.display();
+education.display();
+work.display();
 projects.display();
 
 $("#mapDiv").append(googleMap);
-/*$("#main").append(internationalizeButton);
-
-function inName() {
-    var newName = bio.name.split(" ");
-    newName[0] = newName[0].charAt(0).toUpperCase() + newName[0].slice(1).toLowerCase();
-    newName[1] = newName[1].toUpperCase();
-    return newName[0] +" "+ newName[1];
-}*/
