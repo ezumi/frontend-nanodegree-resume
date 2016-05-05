@@ -1,18 +1,7 @@
-body,
-div,
-ul,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  padding:0;
-  margin:0;
-  font-family: "Roboto", sans-serif;
-}
+ul {
+    padding: 0;
+    margin: 0;
+  }
 
 .clear-fix {
   overflow: auto;
@@ -22,13 +11,6 @@ h6 {
 .work-entry,
 .project-entry {
   padding: 0 5%;
-}
-
-h1 {
-  font-size: 40px;
-  color: #f5a623;
-  line-height: 48px;
-  display: inline;
 }
 
 h2 {
@@ -61,7 +43,6 @@ h5 {
 
 }
 
-
 .date-text {
   font-style: italic;
   font-size: 14px;
@@ -88,15 +69,11 @@ p {
 a {
   color: #1199c3;
   text-decoration: none;
-  margin-top: 10px;
   display: block;
 }
 
-.welcome-message {
-  font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
-  line-height: 28px;
+body {
+  position: relative;
 }
 
 #skills-h3 {
@@ -127,18 +104,217 @@ a {
   background-color: #4a4a4a;
 }
 
-/* TODO: Replace with image later */
-#header {
-  background-color: #484848;
+.projects {
+  background: url("../images/projects-hero-1920.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 600px;
 }
 
-.flex-box {
-  display: -webkit-flex;
+#topContacts {
+  position: relative;
+}
+
+/******/
+
+.content-box {
+  padding-top: 70px;
+}
+
+.flex-row {
   display: flex;
-  flex-direction: row;
+}
+
+.flex-wrap {
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 10px;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/*--- Navigation Menu ---*/
+
+.navbar-custom {
+  transition: padding ease-in-out 500ms, background-color ease-in-out 500ms;
+  padding: 0.5em 0;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  color: #fff;
+  opacity: 0.6;
+  padding: 0.25em 0.75em;
+  display: none;
+}
+
+.nav-menu {
+  margin: 0;
+}
+
+.menu-wrap {
+  flex: 1;
+  text-align: center;
+}
+
+.menu-item,
+.menu-item:hover,
+.menu-item:focus,
+.menu-item-scroll {
+  color: #fff;
+  font: 1.25em/1.2 Arial;
+  padding: 0.75em 1em;
+  font-variant: small-caps;
+}
+
+.menu-item {
+  opacity: 0.6;
+}
+
+.menu-item:hover,
+.menu-item:focus,
+.menu-item:active {
+  opacity: 1;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.navbar-scroll {
+  transition: padding ease-in-out 500ms, background-color ease-in-out 500ms;
+  box-shadow: 0 2px 1px rgba(100,100,100,0.4);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.navbar-scroll-grow {
+  padding: 0.8em 0;
+}
+
+.menu-item-scroll:hover,
+.menu-item-scroll:focus,
+.button-press {
+  border: none;
+  opacity: 1;
+}
+
+/*--- Header with contact information ---*/
+
+.header {
+  background: url("../images/header-hero-1920.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  color: #fff;
+  font: bold 5em/1.3 "Playfair Display", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.role {
+  color: #fff;
+  font: italic 1.7em/1.1 'Open Sans', 'Droid Sans', Arial, sans-serif;
+  text-transform: lowercase;
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.contact-list {
+  display: none;
+  margin-bottom: 1em;
+}
+
+.contact-text {
+  color: #fff;
+  font: 1.2em/1.2 'Open Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+.contact-icons {
+  vertical-align: middle;
+}
+
+.background-mobile {
+  color: #00c9ca;
+}
+
+.background-email {
+  color: #39b54a;
+}
+
+.background-location {
+  color: #db4437;
+}
+
+.background-linkedin {
+  color: #005987;
+}
+
+.icon-github {
+  color: #43c1fb;
+}
+
+.icon-mobile,
+.icon-email,
+.icon-location,
+.icon-linkedin,
+.background-github {
+  color: #fff;
+}
+
+.icon-mobile {
+  text-shadow: 2px 2px #028889;
+}
+
+.icon-email {
+  text-shadow: 2px 2px #196d24;
+}
+
+.icon-location {
+  text-shadow: 2px 2px #81160d;
+}
+
+.icon-linkedin {
+  text-shadow: 2px 2px #01435e;
+}
+
+.biopic {
+  width: 9em;
+  display: none;
+}
+
+.welcome-message {
+  font: italic 1.3em/1.5 Georgia, serif;
+  color: #f3f3f3;
+}
+
+.scroll-button {
+  padding: 4em 0;
+  text-align: center;
+}
+
+.icon-scroll {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.icon-scroll:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+
+
+
+.workExperience {
+  padding-bottom: 5em;
 }
 
 .center-content {
@@ -149,15 +325,9 @@ ul {
   list-style-type: none;
 }
 
-.biopic {
-  float: left;
-  padding: 10px;
-  width: 200px;
-  display: none;
-}
 
 img {
-  padding: 10px;
+  padding: 0.5em;
 }
 
 span {
@@ -211,4 +381,55 @@ span {
   .biopic {
     display: block;
   }
+}
+
+/*-- Added Media Queries --*/
+
+@media screen and (max-width: 650px) {
+    .nav-button {
+        /* Show hamburger button */
+        display: block;
+    }
+
+    .nav-menu {
+      display: none;
+    }
+
+    .menu-wrap{
+      width: 100%;
+      text-align: left;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus {
+      border: 0;
+      opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+  .name {
+    font-size: 2.1em;
+  }
+
+  .role {
+    font-size: 1.2em;
+  }
+
+  .navbar-scroll {
+    padding: 0;
+  }
+
+  .contact-icons {
+    font-size: 2em !important;
+  }
+
+  .contact-text {
+    font-size: 1em;
+  }
+
+  .scroll-button {
+    display: none;
+  }
+
 }

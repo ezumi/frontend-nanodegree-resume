@@ -1,20 +1,16 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-
 var bio = {
     "name": "Esmond Kan",
     "role": "Front-End Web Developer",
     "contacts": {
-        "mobile": "604-561-9600",
+        "mobile": "1-604-353-3000",
         "email": "contact@esmondkan.com",
-        "github": "ezumi",
+        "github": ["ezumi", "https://github.com/ezumi/"],
         "linkedin": "ca.linkedin.com/in/esmondkan",
         "location": "Vancouver, British Columbia"
     },
-    "welcomeMessage": "Hello World!",
-    "skills": ["HTML5", "CSS3", "Javascript", "jQuery","Photoshop"],
-    "bioPic": "images/fry.jpg",
+    "welcomeMessage": "'It's all monkey business here!'",
+    "skills": ["HTML5", "CSS3", "Javascript", "jQuery","Photoshop", "Bootstrap"],
+    "bioPic": "images/monkey-hero.svg",
      display: function() {
 
         /* Name and Role */
@@ -22,25 +18,32 @@ var bio = {
         $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 
         /* Contact Information */
-        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-        $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-        $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-        $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", "linkedIn").replace("%data%", bio.contacts.linkedin));
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#topContacts").append(HTMLemail.replace("%url%", bio.contacts.email).replace("%data%", bio.contacts.email));
+
+        $("#topContacts").append(HTMLlinkedin.replace("%url%", "http://" + bio.contacts.linkedin).replace("%data%", bio.contacts.linkedin));
+        $("#topContacts").append(HTMLgithub.replace("%url%", bio.contacts.github[1]).replace("%data%", bio.contacts.github[0]));
+
+        var fadeAmount = 1200;
+        $('.contact-list').each(function() {
+            $(this).fadeIn(fadeAmount);
+            fadeAmount += 400;
+        });
 
         $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
         $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-        $("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", "linkedIn").replace("%data%", bio.contacts.linkedin));
+        $("#footerContacts").append(HTMLlinkedin.replace("%data%", bio.contacts.linkedin));
 
         /* Bio Image */
-        $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+        //$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
 
         /* Welcome Message */
-        $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        //$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
         /* Skills */
-        $("#header").append(HTMLskillsStart);
+        $("#skill-section").append(HTMLskillsStart);
         bio.skills.forEach(function(skillData) {
             $("#skills").append(HTMLskills.replace("%data%", skillData));
         });
@@ -166,10 +169,72 @@ var projects = {
         });
     }
 }
+    bio.display();
+    education.display();
+    work.display();
+    projects.display();
 
-bio.display();
-education.display();
-work.display();
-projects.display();
+
+
+/*
+ * This function check to see if a scroll occurs and adds or removes the appropriate classes
+ *
+ */
+$(window).scroll(function() {
+    var mq = window.matchMedia("(max-width: 650px)").matches;
+
+    if ($('.navbar').offset().top > 60) {
+        if (!$('.navbar').hasClass('navbar-scroll')) {
+            $('.navbar').addClass('navbar-scroll');
+            $('.navbar').addClass('navbar-scroll-grow');
+            $('.menu-item').addClass('menu-item-scroll');
+        }
+    }
+    else {
+        // If max width is greater than 650
+        if (!mq) {
+            $('.navbar').removeClass('navbar-scroll');
+            $('.navbar').removeClass('navbar-scroll-grow');
+        }
+        // If max width is less than 650 and the menu is hidden
+        else if ((mq) && (!$('#menu').is(':visible'))) {
+            $('.navbar').removeClass('navbar-scroll');
+            $('.navbar').removeClass('navbar-scroll-grow');
+        }
+
+        $('.menu-item').removeClass('menu-item-scroll');
+    }
+});
+
+
+/*
+ * Toggles the menu bar when the nav button is pressed
+ */
+
+$('.nav-button').click(function() {
+    if ($('.navbar').offset().top < 60)
+        $('.navbar').toggleClass('navbar-scroll');
+
+    $('.nav-button').toggleClass('button-press');
+    $('#menu').slideToggle();
+});
+
+
+/*
+ * If window is resized while menu was hidden, make sure to show the menu again
+ */
+
+$(window).resize(function() {
+    if (window.matchMedia("(min-width: 651px)").matches) {
+        // Only remove class if navbar already has the class and it's offset is less than 60px
+        if (($('.navbar').hasClass('navbar-scroll')) && ($('.navbar').offset().top < 60)) {
+            $('.navbar').removeClass('navbar-scroll');
+        }
+        $('#menu').css({'display': 'flex'});
+    }
+    else {
+        $('#menu').css({'display': 'none'});
+    }
+});
 
 $("#mapDiv").append(googleMap);

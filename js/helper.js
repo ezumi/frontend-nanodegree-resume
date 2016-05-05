@@ -12,16 +12,17 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
-var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr>';
+var HTMLheaderName = '<h1 id="name" class="name col-lg-12 col-md-12 col-sm-12 col-xs-12"">%data%</h1>';
+var HTMLheaderRole = '<p class="role">%data%</p>';
 
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLcontactGeneric = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="orange-text">%contact%</span><span class="contact-text">%data%</span></li>';
+var HTMLmobile = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-mobile"></i><i class="fa fa-mobile fa-stack-1x icon-mobile" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
+var HTMLemail = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="mailto:%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-email"></i><i class="fa fa-envelope fa-stack-1x icon-email" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
+var HTMLtwitter = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-twitter"></i><i class="fa fa-twitter fa-stack-1x icon-twitter" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
+var HTMLgithub = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-github"></i><i class="fa fa-github fa-stack-2x icon-github" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
+var HTMLblog = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-wordpress"></i><i class="fa fa-wordpress fa-stack-2x icon-wordpress" aria-hidden="true"></i></span><span class="orange-text">blog</span><span class="contact-text">%data%</span></li>';
+var HTMLlocation = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-location"></i><i class="fa fa-map-marker fa-stack-1x icon-location" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
+var HTMLlinkedin = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-linkedin"></i><i class="fa fa-linkedin fa-stack-1x icon-linkedin" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
