@@ -209,6 +209,7 @@ $(window).scroll(function() {
 
         $('.menu-item').removeClass('menu-item-scroll');
     }
+    check_if_in_view();
 });
 
 
@@ -243,6 +244,37 @@ $(window).resize(function() {
 });
 
 /*
+ * Modified animate if in view function from: http://www.sitepoint.com/scroll-based-animations-jquery-css3/
+ *
+ */
+
+function check_if_in_view() {
+  var $animation_elements = $('.animation-element');
+  var $window = $(window);
+  var window_height = $window.height();
+  var window_top_position = $window.scrollTop();
+  var window_bottom_position = (window_top_position + window_height);
+
+  $.each($animation_elements, function() {
+    var $element = $(this);
+    var element_height = $element.outerHeight();
+    var element_top_position = $element.offset().top;
+    var element_bottom_position = (element_top_position + element_height);
+
+    // Get animation class to add from data attribute in DOM
+    var animation_class = $element.data("animation-class");
+
+    //check to see if this current container is within viewport
+    if ((element_bottom_position >= window_top_position) &&
+        (element_top_position <= window_bottom_position)) {
+      $element.addClass(animation_class);
+    } else {
+      $element.removeClass(animation_class);
+    }
+  });
+}
+
+/*
  * Invoke display function from each resume object
  *
  */
@@ -251,5 +283,4 @@ bio.display();
 education.display();
 work.display();
 projects.display();
-
 $("#mapDiv").append(googleMap);

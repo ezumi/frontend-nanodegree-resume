@@ -159,7 +159,7 @@ span {
 
 .header-wrap {
   background: url("../images/header-hero-1920.jpg") center/cover no-repeat fixed;
-  min-height: 80vh;
+  min-height: 100vh;
 }
 
 .name {
@@ -271,8 +271,8 @@ span {
 
 .skills-container {
   background-color: #29abe2;
-  transition: transform 0.4s, opacity 1s;
-  animation: slide-right 1.2s forwards;
+  transform: translate3d(-100%, 0, 0);
+  opacity: 0;
 }
 
 .skills-entry {
@@ -298,8 +298,8 @@ span {
 }
 
 .work-experience-container {
-  transition: transform 0.4s, opacity 1s;
-  animation: slide-left 1.2s forwards;
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
 }
 
 .entry-link,
@@ -309,6 +309,14 @@ span {
 
 .location-text {
   float: right;
+}
+
+/*--- Slide animation class ---*/
+
+.slide {
+  transition: transform 800ms, opacity 800ms;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 /*--- Projects section ---*/
