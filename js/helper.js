@@ -12,84 +12,54 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
-var HTMLheaderName = '<h1 id="name" class="name col-lg-12 col-md-12 col-sm-12 col-xs-12"">%data%</h1>';
+var HTMLheaderName = '<h1 id="name" class="name col-lg-12 col-md-12 col-sm-12 col-xs-12">%data%</h1>';
 var HTMLheaderRole = '<p class="role">%data%</p>';
 
-var HTMLcontactGeneric = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="orange-text">%contact%</span><span class="contact-text">%data%</span></li>';
-var HTMLmobile = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-mobile"></i><i class="fa fa-mobile fa-stack-1x icon-mobile" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
+var HTMLcontactGeneric = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12">%contact%<span class="contact-text">%data%</span></li>';
+var HTMLmobile = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="tel:%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-mobile"></i><i class="fa fa-mobile fa-stack-1x icon-mobile" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
 var HTMLemail = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="mailto:%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-email"></i><i class="fa fa-envelope fa-stack-1x icon-email" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
 var HTMLtwitter = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-twitter"></i><i class="fa fa-twitter fa-stack-1x icon-twitter" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
-var HTMLgithub = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-github"></i><i class="fa fa-github fa-stack-2x icon-github" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
+var HTMLgithub = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-github"></i><i class="fa fa-github fa-stack-2x icon-github" aria-hidden="true"></i></span><span class="contact-text">GitHub</span></a></li>';
 var HTMLblog = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-wordpress"></i><i class="fa fa-wordpress fa-stack-2x icon-wordpress" aria-hidden="true"></i></span><span class="orange-text">blog</span><span class="contact-text">%data%</span></li>';
 var HTMLlocation = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-location"></i><i class="fa fa-map-marker fa-stack-1x icon-location" aria-hidden="true"></i></span><span class="contact-text">%data%</span></li>';
-var HTMLlinkedin = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-linkedin"></i><i class="fa fa-linkedin fa-stack-1x icon-linkedin" aria-hidden="true"></i></span><span class="contact-text">%data%</span></a></li>';
+var HTMLlinkedin = '<li class="contact-list col-lg-4 col-md-6 col-sm-6 col-xs-12"><a href="%url%"><span class="fa-stack fa-3x contact-icons"><i class="fa fa-circle fa-stack-2x background-linkedin"></i><i class="fa fa-linkedin fa-stack-1x icon-linkedin" aria-hidden="true"></i></span><span class="contact-text">LinkedIn</span></a></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
-var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+var HTMLskillsStart = '<ul id="skills-list"></ul>';
+var HTMLskillsHeader = '<li><h2 class="skills-h2">Skills at a Glance</h2></li>';
+var HTMLskills = '<li class="skill-item flex-item"><span>%data%</span></li>';
+var HTMLskillsImage = '<img src="%url%" class="skills-image">';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
-var HTMLworkEmployer = '<a href="#">%data%';
+var HTMLworkEmployer = '<a href="%url%" class="entry-link">%data%';
 var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
-var HTMLworkDescription = '<p><br>%data%</p>';
+var HTMLworkDescription = '<div style="clear: both;"></div><p>%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
+var HTMLprojectTitle = '<a href="#" class="project-title">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectDescription = '<p class="project-description"><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#">%data%';
-var HTMLschoolDegree = ' -- %data%</a>';
+var HTMLschoolName = '<a href="#" class="entry-link">%data%';
+var HTMLschoolDegree = ' — %data%</a>';
 var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLschoolMajor = '<div style="clear: both;"></div><p>Major: %data%</p>';
 
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
+var HTMLonlineClasses = '<h2>Online Classes</h2>';
+var HTMLonlineTitle = '<a href="#" class="entry-link">%data%';
+var HTMLonlineSchool = ' — %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
+var HTMLonlineURL = '<div style="clear: both;"></div><p><a href="#">%data%</a></p>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
-
-
-/*
-The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
-*/
-$(document).ready(function() {
-  $('button').click(function() {
-    var iName = inName() || function(){};
-    $('#name').html(iName);
-  });
-});
-
-/*
-The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
-*/
-clickLocations = [];
-
-function logClicks(x,y) {
-  clickLocations.push(
-    {
-      x: x,
-      y: y
-    }
-  );
-  console.log('x location: ' + x + '; y location: ' + y);
-}
-
-$(document).click(function(loc) {
-  // your code goes here!
-});
-
-
 
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.

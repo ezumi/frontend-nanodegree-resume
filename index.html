@@ -12,65 +12,82 @@
     <script src="js/helper.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
-<body id="top-page">
-
-    <nav class="navbar navbar-fixed-top navbar-custom">
-        <div class="container">
+<body id="top-page-anchor">
+    <nav class="navbar navbar-fixed-top">
+        <section class="container">
             <button class="nav-button"><i class="fa fa-bars fa-2x"></i></button>
             <ul id="menu" class="nav-menu flex-row flex-wrap">
-                <li class="menu-wrap"><a class="menu-item" href="#top-page">Contact</a></li>
-                <li class="menu-wrap"><a class="menu-item" href="#skill-section">Work Experience</a></li>
-                <li class="menu-wrap"><a class="menu-item" href="#projects">Projects</a></li>
-                <li class="menu-wrap"><a class="menu-item" href="#education">Education</a></li>
+                <li class="menu-wrap"><a class="menu-item" href="#top-page-anchor">Contact</a></li>
+                <li class="menu-wrap"><a class="menu-item" href="#skills-work-anchor">Skills & Experience</a></li>
+                <li class="menu-wrap"><a class="menu-item" href="#projects-anchor">Projects</a></li>
+                <li class="menu-wrap"><a class="menu-item" href="#education-anchor">Education</a></li>
             </ul>
-        </div>
+        </section>
     </nav>
 
-    <section class="header content-box">
+    <header class="header-wrap flex-row flex-center">
         <div id="header" class="container">
-            <ul id="topContacts" class="flex-row flex-wrap"></ul>
+            <ul id="topContacts" class="row"></ul>
             <div class="scroll-button">
-                <a href="#skill-section" class="icon-scroll fa-stack fa-3x">
+                <a href="#skills-work-anchor" class="icon-scroll fa-stack fa-3x">
                     <i class="fa fa-circle-o fa-stack-2x"></i>
                     <i class="fa fa-angle-double-down fa-stack-1x" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <div style="background: url('images/white_bed_sheet.png')">
-        <section id="skill-section" class="content-box container">
-        </section>
-
-        <section class="workExperience container">
-            <div id="workExperience" class="gray">
-                <h2>Work Experience</h2>
+    <section id="skills-work-anchor" class="skill-work-wrap">
+        <section class="container skills-container">
+            <div class="row">
+                <div id="skills" class="flex-row col-lg-12 col-md-12 col-sm-12 col-xs-12 skills-entry">
+                    <img src="images/skills.svg" class="skills-image">
+                </div>
             </div>
         </section>
-    </div>
 
-    <section class="projects content-box container-fluid">
-        <div id="projects" class="container">
-            <h2>Projects</h2>
+        <section class="work-experience-container container">
+            <div class="row">
+                <div id="workExperience" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2>Work Experience</h2>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="projects-anchor" class="projects-wrap">
+        <section class="projects-container container">
+            <div id="projects">
+                <h2 class="project-h2">Projects</h2>
+            </div>
+        </section>
+    </section>
+
+    <section id="education-anchor" class="education-wrap">
+        <section class="education-container container">
+            <div class="row">
+                <div id="education" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 gray">
+                    <h2>Education</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-container container">
+            <div id="mapDiv">
+                <h2>Where I've Lived and Worked</h2>
+            </div>
+        </section>
+    </section>
+
+    <section id="lets-connect" class="footer-wrap container-fluid">
+        <h2 class="connect-h2">Let's Connect</h2>
+        <div class="container">
+            <ul id="footerContacts" class="footer-container row">
+            </ul>
         </div>
     </section>
 
-    <section class="education content-box container">
-        <div id="education" class="gray">
-            <h2>Education</h2>
-        </div>
-    </section>
-
-    <div id="mapDiv">
-        <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="lets-connect" class="dark-gray">
-        <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-        </ul>
-    </div>
     <script src="js/resumeBuilder.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript">
         if(document.getElementsByClassName('flex-item').length === 0) {
             document.getElementById('topContacts').style.display = 'none';

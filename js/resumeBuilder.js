@@ -2,10 +2,10 @@ var bio = {
     "name": "Esmond Kan",
     "role": "Front-End Web Developer",
     "contacts": {
-        "mobile": "1-604-353-3000",
+        "mobile": "604.353.3000",
         "email": "contact@esmondkan.com",
-        "github": ["ezumi", "https://github.com/ezumi/"],
-        "linkedin": "ca.linkedin.com/in/esmondkan",
+        "github": "https://github.com/ezumi/",
+        "linkedin": "http://ca.linkedin.com/in/esmondkan",
         "location": "Vancouver, British Columbia"
     },
     "welcomeMessage": "'It's all monkey business here!'",
@@ -19,33 +19,35 @@ var bio = {
 
         /* Contact Information */
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile).replace("%url%", bio.contacts.mobile));
         $("#topContacts").append(HTMLemail.replace("%url%", bio.contacts.email).replace("%data%", bio.contacts.email));
-
-        $("#topContacts").append(HTMLlinkedin.replace("%url%", "http://" + bio.contacts.linkedin).replace("%data%", bio.contacts.linkedin));
-        $("#topContacts").append(HTMLgithub.replace("%url%", bio.contacts.github[1]).replace("%data%", bio.contacts.github[0]));
-
-        var fadeAmount = 1200;
-        $('.contact-list').each(function() {
-            $(this).fadeIn(fadeAmount);
-            fadeAmount += 400;
-        });
+        $("#topContacts").append(HTMLlinkedin.replace("%url%", bio.contacts.linkedin));
+        $("#topContacts").append(HTMLgithub.replace("%url%", bio.contacts.github));
 
         $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
         $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
         $("#footerContacts").append(HTMLlinkedin.replace("%data%", bio.contacts.linkedin));
 
+        /* Fade contact list sequentially */
+        var fadeAmount = 1200;
+        $('.contact-list').each(function() {
+            $(this).fadeIn(fadeAmount);
+            fadeAmount += 400;
+        });
+
         /* Bio Image */
-        //$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+        $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
 
         /* Welcome Message */
-        //$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
         /* Skills */
-        $("#skill-section").append(HTMLskillsStart);
+        $("#skills").prepend(HTMLskillsStart);
+        $("#skills-list").append(HTMLskillsHeader);
+
         bio.skills.forEach(function(skillData) {
-            $("#skills").append(HTMLskills.replace("%data%", skillData));
+            $("#skills-list").append(HTMLskills.replace("%data%", skillData));
         });
     }
 }
@@ -92,20 +94,22 @@ var education = {
             $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[index].majors));
         });
 
-        education.onlineCourses.forEach(function(onlineData, index) {
+        if(education.onlineCourses.length > 0) {
             $("#education").append(HTMLonlineClasses);
 
-            var onlineClasses = $("#education").find("h3");
+            education.onlineCourses.forEach(function(onlineData, index) {
+                $("#education").append(HTMLschoolStart);
 
-            /* Replace URL and program name then concatenate school name to string */
-            var formattedOnlineClasses = HTMLonlineTitle.replace("#", education.onlineCourses[index].url)
-                                                        .replace("%data%", education.onlineCourses[index].title)
-                                       + HTMLonlineSchool.replace("%data%", education.onlineCourses[index].school);
+                /* Replace URL and program name then concatenate school name to string */
+                var formattedOnlineClasses = HTMLonlineTitle.replace("#", education.onlineCourses[index].url)
+                                                            .replace("%data%", education.onlineCourses[index].title)
+                                           + HTMLonlineSchool.replace("%data%", education.onlineCourses[index].school);
 
-            onlineClasses.append(formattedOnlineClasses);
-            onlineClasses.append(HTMLonlineDates.replace("%data%", education.onlineCourses[index].date));
-            onlineClasses.append(HTMLonlineURL.replace("#", education.onlineCourses[index].url).replace("%data%", education.onlineCourses[index].url));
-        });
+                $(".education-entry:last").append(formattedOnlineClasses);
+                $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[index].date));
+                $(".education-entry:last").append(HTMLonlineURL.replace("#", education.onlineCourses[index].url).replace("%data%", education.onlineCourses[index].url));
+            });
+        }
     }
 }
 
@@ -116,7 +120,7 @@ var work = {
             "title": "IT Technical Support",
             "location": "206 E Columbia Street, New Westminster, BC, V3L 3W5",
             "dates": "2006 - 2015",
-            "description": "Deploy, configure and maintain computer systems at the company. Provide assistance to agents in resolving their technical issues.",
+            "description": "Deploy, configure and maintain computer systems at the company.<br>Provide assistance to agents in resolving their technical issues.",
             "url": "http://metrowestinsurance.net/"
         },
         {
@@ -124,7 +128,7 @@ var work = {
             "title": "Marketing Project Manager",
             "location": "#285 - 4111 Hastings Street, Burnaby, BC, V5C 6T7",
             "dates": "2013 - Present",
-            "description": "Develop and integrate advertising campaigns targeting various online mediums including web, social media, mobile and display network traffic. Design web visuals and graphic assets for marketing projects. Create fully responsive landing pages utilizing HTML, CSS, Javascript and jQuery. Optimize deployed campaigns with revised marketing strategies to increase return of investment.",
+            "description": "Develop and integrate advertising campaigns targeting various online mediums including web, social media, mobile and display network traffic.<br>Design web visuals and graphic assets for marketing projects.<br>Create fully responsive landing pages utilizing HTML, CSS, Javascript and jQuery.<br>Optimize deployed campaigns with revised marketing strategies to increase return of investment.",
             "url": "http://pushmedia.ca/"
         }
     ],
@@ -133,7 +137,7 @@ var work = {
             $("#workExperience").append(HTMLworkStart);
 
             /* Replace URL and employter name then concatenate job title to string */
-            var formattedEmployer = HTMLworkEmployer.replace("#", work.jobs[index].url)
+            var formattedEmployer = HTMLworkEmployer.replace("%url%", work.jobs[index].url)
                                                     .replace("%data%", work.jobs[index].employer)
                                   + HTMLworkTitle.replace("%data%", work.jobs[index].title);
 
@@ -148,9 +152,15 @@ var work = {
 var projects = {
     "project" : [
         {
-            "title": "Portfolio",
+            "title": "Portfolio Webpage",
             "date": "4/2016",
             "description": "Personal portofolio to showcase the latest projects I have completed.",
+            "images": ["images/portfolio1.png"]
+        },
+        {
+            "title": "Upcoming Projects",
+            "date": "2016",
+            "description": "Come back for more projects I plan to complete in the near future.",
             "images": ["images/197x148.gif", "images/197x148.gif"]
         }
     ],
@@ -169,17 +179,12 @@ var projects = {
         });
     }
 }
-    bio.display();
-    education.display();
-    work.display();
-    projects.display();
-
-
 
 /*
- * This function check to see if a scroll occurs and adds or removes the appropriate classes
+ * This function checks to see if a scroll occurs and adds or removes the appropriate classes
  *
  */
+
 $(window).scroll(function() {
     var mq = window.matchMedia("(max-width: 650px)").matches;
 
@@ -236,5 +241,15 @@ $(window).resize(function() {
         $('#menu').css({'display': 'none'});
     }
 });
+
+/*
+ * Invoke display function from each resume object
+ *
+ */
+
+bio.display();
+education.display();
+work.display();
+projects.display();
 
 $("#mapDiv").append(googleMap);
