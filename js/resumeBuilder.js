@@ -77,7 +77,7 @@ var education = {
             $("#education").append(HTMLschoolStart);
 
             /* Replace URL and school name then concatenate degree to string */
-            var formattedSchool = HTMLschoolName.replace("#", education.schools[index].url).replace("%data%", education.schools[index].name) + HTMLschoolDegree.replace("%data%", education.schools[index].degree);
+            var formattedSchool = HTMLschoolName.replace("%url%", education.schools[index].url).replace("%data%", education.schools[index].name) + HTMLschoolDegree.replace("%data%", education.schools[index].degree);
 
             $(".education-entry:last").append(formattedSchool);
             $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[index].dates));
