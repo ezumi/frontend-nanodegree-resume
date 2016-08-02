@@ -1,9 +1,5 @@
-body,
 p {
-  font: 1.1em / 1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-p {
+  font: 1.2em/1.2 "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #333;
 }
 
@@ -14,8 +10,7 @@ a {
 }
 
 h2 {
-  color: #999;
-  font: bold 1.25em/1 "Open Sans", "Droid Sans", Arial, sans-serif;
+  font-family: "Open Sans", "Droid Sans", Arial, sans-serif;
   text-shadow: 1px 1px rgba(30,30,30,0.4);
   padding: 0.5em 4%;
 }
@@ -505,7 +500,7 @@ span {
   }
 
   .contact-icons {
-    font-size: 2em !important;
+    font-size: 2em;
   }
 
   .contact-text {

@@ -19,12 +19,10 @@ var bio = {
 
         /* Contact Information */
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile).replace("%url%", bio.contacts.mobile));
         $("#topContacts").append(HTMLemail.replace("%url%", bio.contacts.email).replace("%data%", bio.contacts.email));
         $("#topContacts").append(HTMLlinkedin.replace("%url%", bio.contacts.linkedin));
         $("#topContacts").append(HTMLgithub.replace("%url%", bio.contacts.github));
 
-        $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
         $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
         $("#footerContacts").append(HTMLlinkedin.replace("%data%", bio.contacts.linkedin));
@@ -140,17 +138,25 @@ var projects = {
         "title": "Portfolio Webpage",
         "date": "4/2016",
         "description": "Personal portofolio to showcase the latest projects I have completed.",
-        "images": ["images/portfolio1.png"]
+        "images": ["images/portfolio1.png"],
+        "url": "http://esmondkan.com"
+    }, {
+        "title": "Frogger Arcade Clone",
+        "date": "7/2016",
+        "description": "An arcade clone of the classic frogger game created with Javascript and HTML5.",
+        "images": ["images/frogger.png"],
+        "url": "http://esmondkan.com/udacity/frontend-nanodegree-arcade-game/"
     }, {
         "title": "Upcoming Projects",
         "date": "2016",
         "description": "Come back for more projects I plan to complete in the near future.",
-        "images": ["images/197x148.gif", "images/197x148.gif"]
+        "images": ["images/197x148.gif", "images/197x148.gif"],
+        "url": "#"
     }],
     display: function() {
         projects.project.forEach(function(projectData, index) {
             $("#projects").append(HTMLprojectStart);
-            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.project[index].title));
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%url%", projects.project[index].url).replace("%data%", projects.project[index].title));
             $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.project[index].date));
             $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.project[index].description));
 
@@ -234,8 +240,6 @@ $(window).resize(function() {
  */
 
 function check_if_in_view() {
-    var $animation_elements = $('.animation-element');
-    var $window = $(window);
     var window_height = $window.height();
     var window_top_position = $window.scrollTop();
     var window_bottom_position = (window_top_position + window_height);
@@ -258,6 +262,11 @@ function check_if_in_view() {
         }
     });
 }
+
+// Load animation-elements into array
+
+var $animation_elements = $('.animate-element');
+var $window = $(window);
 
 /*
  * Invoke display function from each resume object
